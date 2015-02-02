@@ -1,0 +1,597 @@
+// goonRig Helper Scripts v0_1_0
+
+// Define pose groups in arrays
+
+global string $goon_SelectAll[] = {
+	
+							"Foot_Right_CTRL",
+							"Root_CTRL",
+							"Foot_Left_CTRL",
+							"Foot_Right_IK_CTRL",
+							"Foot_Left_IK_CTRL",
+							"Hand_Right_FK_CTRL",
+							"Hand_Left_FK_CTRL",
+							"Jaw_FK_CTRL",
+							"Tongue_Base_FK_CTRL",
+							"Tongue_Mid_FK_CTRL",
+							"Tongue_Tip_FK_CTRL",
+							"UpperLeg_Right_FK_CTRL",
+							"LowerLeg_Right_FK_CTRL",
+							"Foot_Right_FK_CTRL",
+							"Toe_Right_FK_CTRL",
+							"UpperLeg_Left_FK_CTRL",
+							"LowerLeg_Left_FK_CTRL",
+							"Foot_Left_FK_CTRL",
+							"Toe_Left_FK_CTRL",
+							"EyeTarget_Right_CTRL",
+							"EyeTarget_Left_CTRL",
+							"Leg_Right_PV_CTRL",
+							"Leg_Left_PV_CTRL",
+							"Arm_Right_PV_CTRL",
+							"Hand_Right_IK_CTRL",
+							"Hand_Right_CTRL",
+							"Arm_Left_PV_CTRL",
+							"Hand_Left_IK_CTRL",
+							"Hand_Left_CTRL",
+							"Center_Root_FK_CTRL",
+							"Hip_FK_CTRL",
+							"Waist_FK_CTRL",
+							"Ribs_FK_CTRL",
+							"Chest_FK_CTRL",
+							"Clavicle_Left_FK_CTRL",
+							"Clavicle_Right_FK_CTRL",
+							"Neck_FK_CTRL",
+							"Head_FK_CTRL",
+							"MouthCorner_Right_CTRL",
+							"MouthCorner_Left_CTRL",
+							"Cheek_Right_CTRL",
+							"Cheek_Left_CTRL",
+							"Brow_CTRL",
+							"BrowInner_Right_CTRL",
+							"BrowMid_Right_CTRL",
+							"BrowOuter_Right_CTRL",
+							"BrowOuter_Left_CTRL",
+							"BrowMid_Left_CTRL",
+							"BrowInner_Left_CTRL",
+							"UpperArm_Left_FK_CTRL",
+							"LowerArm_Left_FK_CTRL",
+							"UpperArm_Right_FK_CTRL",
+							"LowerArm_Right_FK_CTRL",
+							"EyeTarget_CTRL"
+	
+						};
+
+global string $mouth_nodes[] = {
+							"Jaw_FK_CTRL.translateX",
+							"Jaw_FK_CTRL.translateY",
+							"Jaw_FK_CTRL.translateZ",
+							"Jaw_FK_CTRL.rotateX",
+							"Jaw_FK_CTRL.rotateY",
+							"Jaw_FK_CTRL.rotateZ",
+							"Jaw_FK_CTRL.mouthU_D",
+							"Jaw_FK_CTRL.mouthL_R",
+							"Jaw_FK_CTRL.upperTeethU_D",
+							"Jaw_FK_CTRL.lowerTeethU_D",
+							"Jaw_FK_CTRL.upperLipCurl",
+							"Jaw_FK_CTRL.lowerLipCurl",
+							"Jaw_FK_CTRL.RULip",
+							"Jaw_FK_CTRL.MULip",
+							"Jaw_FK_CTRL.LULip",
+							"Jaw_FK_CTRL.RLLip",
+							"Jaw_FK_CTRL.MLLip",
+							"Jaw_FK_CTRL.LLLip",
+							"MouthCorner_Right_CTRL.translateX",
+							"MouthCorner_Right_CTRL.translateY",
+							"MouthCorner_Left_CTRL.translateX",
+							"MouthCorner_Left_CTRL.translateY",
+							"Cheek_Left_CTRL.translateX",
+							"Cheek_Left_CTRL.translateY",
+							"Cheek_Left_CTRL.puff",
+							"Cheek_Right_CTRL.translateX",
+							"Cheek_Right_CTRL.translateY",
+							"Cheek_Right_CTRL.puff"
+						};
+						
+global string $mouth_select[] = {
+							"Jaw_FK_CTRL",
+							"MouthCorner_Right_CTRL",
+							"MouthCorner_Left_CTRL",
+							"Cheek_Left_CTRL",
+							"Cheek_Right_CTRL"	
+						};
+						
+global string $brow_nodes[] = {
+							"EyeTarget_Left_CTRL.upperLidOpenClose",
+							"EyeTarget_Left_CTRL.lowerLidOpenClose",
+							"EyeTarget_Left_CTRL.dialate",
+							"EyeTarget_Right_CTRL.upperLidOpenClose",
+							"EyeTarget_Right_CTRL.lowerLidOpenClose",
+							"EyeTarget_Right_CTRL.dialate",
+							"Brow_CTRL.translateY",
+							"Brow_CTRL.scrunch",
+							"BrowInner_Left_CTRL.translateY",
+							"BrowMid_Left_CTRL.translateY",
+							"BrowOuter_Left_CTRL.translateY",
+							"BrowInner_Right_CTRL.translateY",
+							"BrowMid_Right_CTRL.translateY",
+							"BrowOuter_Right_CTRL.translateY"				
+						};
+						
+global string $brow_select[] = {
+							"EyeTarget_Left_CTRL",
+							"EyeTarget_Right_CTRL",
+							"Brow_CTRL",
+							"BrowInner_Left_CTRL",
+							"BrowMid_Left_CTRL",
+							"BrowOuter_Left_CTRL",
+							"BrowInner_Right_CTRL",
+							"BrowMid_Right_CTRL",
+							"BrowOuter_Right_CTRL"			
+						};
+						
+global string $hand_nodes_right[] = {
+							"Hand_Right_CTRL.masterGrip",
+							"Hand_Right_CTRL.masterSpread",
+							"Hand_Right_CTRL.masterCup",
+							"Hand_Right_CTRL.thumbGrip",
+							
+							"Hand_Right_CTRL.indexBase",
+							"Hand_Right_CTRL.indexMid",
+							"Hand_Right_CTRL.indexTip",
+							"Hand_Right_CTRL.indexSpread",
+							"Hand_Right_CTRL.indexRoll",
+							
+							"Hand_Right_CTRL.middleBase",
+							"Hand_Right_CTRL.middleMid",
+							"Hand_Right_CTRL.middleTip",
+							"Hand_Right_CTRL.middleSpread",
+							"Hand_Right_CTRL.middleRoll",
+							
+							"Hand_Right_CTRL.ringBase",
+							"Hand_Right_CTRL.ringMid",
+							"Hand_Right_CTRL.ringTip",
+							"Hand_Right_CTRL.ringSpread",
+							"Hand_Right_CTRL.ringRoll",
+							
+							"Hand_Right_CTRL.littleBase",
+							"Hand_Right_CTRL.littleMid",
+							"Hand_Right_CTRL.littleTip",
+							"Hand_Right_CTRL.littleSpread",
+							"Hand_Right_CTRL.littleRoll",
+							
+							"Hand_Right_CTRL.thumbBase",
+							"Hand_Right_CTRL.thumbMid",
+							"Hand_Right_CTRL.thumbTip",
+							"Hand_Right_CTRL.thumbSpread",
+							"Hand_Right_CTRL.thumbRoll"
+						};
+
+global string $hand_nodes_left[] = {
+							"Hand_Left_CTRL.masterGrip",
+							"Hand_Left_CTRL.masterSpread",
+							"Hand_Left_CTRL.masterCup",
+							"Hand_Left_CTRL.thumbGrip",
+							
+							"Hand_Left_CTRL.indexBase",
+							"Hand_Left_CTRL.indexMid",
+							"Hand_Left_CTRL.indexTip",
+							"Hand_Left_CTRL.indexSpread",
+							"Hand_Left_CTRL.indexRoll",
+							
+							"Hand_Left_CTRL.middleBase",
+							"Hand_Left_CTRL.middleMid",
+							"Hand_Left_CTRL.middleTip",
+							"Hand_Left_CTRL.middleSpread",
+							"Hand_Left_CTRL.middleRoll",
+							
+							"Hand_Left_CTRL.ringBase",
+							"Hand_Left_CTRL.ringMid",
+							"Hand_Left_CTRL.ringTip",
+							"Hand_Left_CTRL.ringSpread",
+							"Hand_Left_CTRL.ringRoll",
+							
+							"Hand_Left_CTRL.littleBase",
+							"Hand_Left_CTRL.littleMid",
+							"Hand_Left_CTRL.littleTip",
+							"Hand_Left_CTRL.littleSpread",
+							"Hand_Left_CTRL.littleRoll",
+							
+							"Hand_Left_CTRL.thumbBase",
+							"Hand_Left_CTRL.thumbMid",
+							"Hand_Left_CTRL.thumbTip",
+							"Hand_Left_CTRL.thumbSpread",
+							"Hand_Left_CTRL.thumbRoll"
+						};
+						
+// Ah... if only mel had multiedimensional arrays
+// These strings will store , delimited lists that contain the name, image path and data for each pose
+
+global string $hand_poses[];
+global string $mouth_poses[];
+global string $phoneme_poses[];
+global string $brow_poses[];
+
+// Recursive function to find an unused filename
+global proc string getUnusedFilename(string $filename){
+	
+	if(`filetest -s $filename`){
+		
+		string $baseName[];
+		tokenize $filename "." $baseName;
+		string $digits = `match "[0-9]*$" $baseName[0]`;
+		if($digits == ""){
+			
+			$newName = $baseName[0] + "1" + "." + $baseName[1];
+			if(`filetest -s $newName`){
+				
+				return `getUnusedFilename($newName)`;
+					
+			}else{
+				
+				return $newName;
+					
+			}
+				
+		}else{
+			
+			$baseName[0] = `substring $baseName[0] 1 (size($baseName[0]) - size($digits))`;
+			$digits = string(int($digits) + 1);
+			
+			$newName = $baseName[0] + $digits + "." + $baseName[1];
+			if(`filetest -s $newName`){
+				
+				return `getUnusedFilename($newName)`;
+					
+			}else{
+				
+				return $newName;
+					
+			}
+				
+		}
+		
+	}else{
+	
+		return $filename;	
+		
+	}
+		
+}
+
+global proc rebuildIcons(string $poses[], string $node_group[], string $curRig)
+{
+	
+	string $folder;
+	string $cam;
+	
+	if($node_group[0] == "Jaw_FK_CTRL.translateX"){
+		
+		$folder = "mouth_icons";
+		$cam = $curRig + "camFace";
+			
+	}else if($node_group[0] == "EyeTarget_Left_CTRL.upperLidOpenClose"){
+		
+		$folder = "brow_icons";
+		$cam = $curRig + "camFace";
+			
+	}else if($node_group[0] == "Hand_Left_CTRL.masterGrip"){
+		
+		$folder = "hand_icons";
+		$cam = $curRig + "camHandLeft";
+			
+	}else if($node_group[0] == "Hand_Right_CTRL.masterGrip"){
+		
+		$folder = "hand_icons";
+		$cam = $curRig + "camHandRight";
+			
+	}
+	
+	// Get Current Pose and save it...
+	addPose("current_temp", $node_group, $poses, $curRig);
+	
+	for($n = 0; $n < size($poses); $n++){
+		
+		string $pose[];
+		tokenize ($poses[$n], ",", $pose);
+		string $userfiles = `internalVar -userPrefDir`;
+		// If icon doesn't exist, make it...
+		if(!(`filetest -r ($userfiles + "goonFiles/" + $folder + "/" + $pose[1])`)){
+			
+			string $iconname = basenameEx($pose[1]);
+			applyPose($n, $poses, $node_group, $curRig);
+			print ("Making icon using camera: " + $cam);
+			makeIcon($iconname, $folder, $cam, 0);
+			
+		}		
+				
+	}
+	
+	// Go back to original state and delete temp pose...
+	applyPose(size($poses) - 1, $poses, $node_group, $curRig);
+	deletePose(size($poses) - 1, $poses, $node_group);
+	
+}
+
+// Turn on pose-lights if there are no other lights and render icons. Returns image file name.
+// Removed pose-lights for now... they would interfere with any other lights in teh scene
+global proc string makeIcon(string $name, string $folder, string $camera, int $overwrite){
+	
+	// set renderGlobals to png, saving old setting
+	int $currentFormat = `getAttr "defaultRenderGlobals.imageFormat"`;
+	string $currentPrefix = `getAttr "defaultRenderGlobals.imageFilePrefix"`;
+	setAttr "defaultRenderGlobals.imageFormat" 32;
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix "goonIconTemp";
+	//setAttr "poseLights.visibility" 1;
+	string $file = `render -x 100 -y 100 $camera`;
+	//setAttr "poseLights.visibility" 0;
+	string $ext = fileExtension($file);
+	
+	string $iconname = $name + "." + $ext;
+	
+	// if we aren't overwriting, find a new filename...
+	if($overwrite == 0){
+		
+		$iconname = getUnusedFilename(`internalVar -userPrefDir` + "/goonFiles/" + $folder + "/" + $iconname);
+		$iconname = basename($iconname, "");
+			
+	}
+	
+	sysFile -rename (`internalVar -userPrefDir` + "/goonFiles/" + $folder + "/" + $iconname) $file;
+	setAttr "defaultRenderGlobals.imageFormat" $currentFormat;
+	setAttr -type "string" defaultRenderGlobals.imageFilePrefix "";	
+	
+	return ($iconname);
+		
+} 
+
+// add a pose
+global proc addPose(string $name, string $node_group[], string $poses[], string $curRig) {
+	
+	string $cam;
+	string $folder;
+	
+	if($node_group[0] == "Jaw_FK_CTRL.translateX"){
+		
+		$folder = "mouth_icons";
+		$cam = $curRig + "camFace";
+			
+	}else if($node_group[0] == "EyeTarget_Left_CTRL.upperLidOpenClose"){
+		
+		$folder = "brow_icons";
+		$cam = $curRig + "camFace";
+			
+	}else if($node_group[0] == "Hand_Left_CTRL.masterGrip"){
+		
+		$folder = "hand_icons";
+		$cam = $curRig + "camHandLeft";
+			
+	}else if($node_group[0] == "Hand_Right_CTRL.masterGrip"){
+		
+		$folder = "hand_icons";
+		$cam = $curRig + "camHandRight";
+			
+	}
+
+	string $new_pose;
+	$new_pose = $name + "," + makeIcon($name, $folder, $cam, 0);
+
+	for($n = 0; $n < size($node_group); $n++){
+		
+		$new_pose = $new_pose + "," + `getAttr ($curRig + $node_group[$n])`;
+			
+	}
+
+	$poses[size($poses)] = $new_pose;
+
+		
+}
+
+// Edit an existing pose by index
+global proc editPose(int $index, string $name, string $node_group[], string $poses[], string $curRig) {
+	
+	string $cam;
+	string $folder;
+	
+	if($node_group[0] == "Jaw_FK_CTRL.translateX"){
+		
+		$folder = "mouth_icons";
+		$cam = $curRig + "camFace";
+			
+	}else if($node_group[0] == "EyeTarget_Left_CTRL.upperLidOpenClose"){
+		
+		$folder = "brow_icons";
+		$cam = $curRig + "camFace";
+			
+	}else if($node_group[0] == "Hand_Left_CTRL.masterGrip"){
+		
+		$folder = "hand_icons";
+		$cam = $curRig + "camHandLeft";
+			
+	}else if($node_group[0] == "Hand_Right_CTRL.masterGrip"){
+		
+		$folder = "hand_icons";
+		$cam = $curRig + "camHandRight";
+			
+	}
+	
+	string $pose[];
+	
+	tokenize($poses[$index], ",", $pose);
+		
+	string $baseName[];
+	tokenize $pose[1] "." $baseName;
+	
+	string $oldIcon = $pose[1];
+	
+	$pose[0] = $name;
+	$pose[1] = makeIcon($baseName[0], $folder, $cam, 1);
+	
+	if($oldIcon != $pose[1]){
+		
+		// Saved with a new extension... delete old file... this should never happen, but just being safe...
+		print "Either old icon was messed up, or new icon wasn't made as a PNG... something is messed up... don't trust output...";	
+		sysFile -delete (`internalVar -userPrefDir` + "/goonFiles/" + $folder + "/" + $oldIcon);
+		
+	}
+		
+	for($n = 0; $n < size($node_group); $n++){
+				
+		$pose[$n + 2] = `getAttr ($curRig + $node_group[$n])`;
+					
+	}
+	
+	string $newpose = "";
+	
+	for($p = 0; $p < size($pose); $p++){
+		
+		$newpose = $newpose + $pose[$p];
+		if($p < size($pose) - 1) $newpose = $newpose + ",";
+		
+	}
+	
+	$poses[$index] = $newpose;
+	
+}
+
+// apply a given pose to the specified pose_group
+global proc applyPose(int $index, string $poses[], string $node_group[], string $curRig){
+
+	string $pose[];
+	
+	tokenize($poses[$index], ",", $pose);
+	
+	for($n = 0; $n < size($node_group); $n++){
+				
+		float $value = $pose[$n + 2];
+		setAttr ($curRig + $node_group[$n]) $value;
+					
+	}
+	
+}
+
+global proc deletePose(int $index, string $poses[], string $node_group[]){
+	
+	string $pose[];
+	tokenize($poses[$index], ",", $pose);
+	
+	string $folder;
+	
+	if($node_group[0] == "Jaw_FK_CTRL.translateX"){
+		
+		$folder = "mouth_icons";
+			
+	}else if($node_group[0] == "EyeTarget_Left_CTRL.upperLidOpenClose"){
+		
+		$folder = "brow_icons";
+			
+	}else if($node_group[0] == "Hand_Left_FK_CTRL.masterGrip"){
+		
+		$folder = "hand_icons";
+			
+	}else if($node_group[0] == "Hand_Right_FK_CTRL.masterGrip"){
+		
+		$folder = "hand_icons";
+			
+	}
+		
+	// first delete the icon
+	sysFile -delete (`internalVar -userPrefDir` + "goonFiles/" + $folder + "/" + $pose[1]);
+
+	// now remove the element from the array...
+	string $newArray[];
+	int $x = 0;
+	for($n = 0; $n < size($poses) - 1; $n++){
+		
+		if($n == $index) $x++;
+		$newArray[$n] = $poses[$x];
+		$x++;
+	}
+	
+	$poses = $newArray;
+	
+}
+
+// Pass in either Mouth, Brow, or Hand
+global proc loadPoseFile(string $filename, string $poses[], string $target, string $curRig){
+	
+	global string $hand_nodes_right[];
+	global string $hand_nodes_left[];
+	global string $brow_nodes[];
+	global string $mouth_nodes[];
+	
+	global string $hand_poses[];
+	global string $mouth_poses[];
+	global string $phoneme_poses[];
+	global string $brow_poses[];
+	
+	$fileId = fopen($filename, "r");
+	
+	string $type = fgetline($fileId);
+	//trim newlines...
+	$type = substitute("[(\n)(\r)]$", $type, "");
+	
+	if($type == $target){
+		
+		print "Loading pose file...\n";
+			
+	}else{
+		
+		print "Load failed... not a valid pose file...\n";
+		print ("Target " + $type + "\n");
+		print ("Type " + $target + "\n");
+		
+		return;	
+		
+	}
+	
+	clear $poses;
+	
+	int $n = 0;
+	while( !feof($fileId)) {
+		
+		//import and trim newlines
+		$line = substitute("[(\n)(\r)]$", fgetline($fileId), "");
+		if ($line != "") $poses[$n] = $line;
+		$n++;
+			
+	}
+	
+	if($target == "Mouth"){
+		
+		// Make sure we have icons...
+		rebuildIcons($poses, $mouth_nodes, $curRig);
+		
+	}else if($target == "Phoneme"){
+		
+		// Make sure we have icons...
+		rebuildIcons($poses, $mouth_nodes, $curRig);
+		
+	}else if($target == "Brow"){
+		
+		rebuildIcons($poses, $brow_nodes, $curRig);
+		
+	}else if($target == "Hand"){
+		
+		rebuildIcons($poses, $hand_nodes_right, $curRig);
+		
+	}
+	fclose $fileId;
+		
+}
+
+global proc savePoseFile(string $filename, string $poses[], string $target){
+	
+	$fileId = fopen($filename, "w");
+	
+	// Write out which pose file it is...
+	
+	fprint($fileId, ($target + "\n"));		
+
+	for($n = 0; $n < size($poses); $n++){
+		
+		fprint($fileId, ($poses[$n] + "\n"));
+			
+	}
+	fclose $fileId;	
+	
+}

@@ -1,0 +1,601 @@
+source "goonRig_PoseLib.mel";
+
+global string $hand_poses[];
+global string $mouth_poses[];
+global string $phoneme_poses[];
+global string $brow_poses[];
+
+proc selectAll(){
+	
+		global string $goon_SelectAll[];
+		global string $curRig;
+		
+		select -clear;
+		
+		for($obj in $goon_SelectAll){
+		
+			select -add ($curRig + $obj);	
+			
+		}
+	
+}
+
+proc selectBrow(){
+	
+		global string $brow_select[];
+		global string $curRig;
+		
+		select -clear;
+		
+		for($obj in $brow_select){
+		
+			select -add ($curRig + $obj);	
+			
+		}
+	
+}
+
+proc selectMouth(){
+	
+		global string $mouth_select[];
+		global string $curRig;
+		
+		select -clear;
+		
+		for($obj in $mouth_select){
+		
+			select -add ($curRig + $obj);	
+			
+		}	
+	
+}
+
+proc matchFK_LeftLeg(){
+	
+	global string $curRig;
+
+	setAttr ($curRig + "UpperLeg_Left_FK_CTRL.rotateX") `getAttr ($curRig + "IK_UpperLeg_Left_LOC.rotateX")`;
+	setAttr ($curRig + "UpperLeg_Left_FK_CTRL.rotateY") `getAttr ($curRig + "IK_UpperLeg_Left_LOC.rotateY")`;
+	setAttr ($curRig + "UpperLeg_Left_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_UpperLeg_Left_LOC.rotateZ")`;
+	
+	setAttr ($curRig + "LowerLeg_Left_FK_CTRL.rotateX") `getAttr ($curRig + "IK_LowerLeg_Left_LOC.rotateX")`;
+	setAttr ($curRig + "LowerLeg_Left_FK_CTRL.rotateY") `getAttr ($curRig + "IK_LowerLeg_Left_LOC.rotateY")`;
+	setAttr ($curRig + "LowerLeg_Left_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_LowerLeg_Left_LOC.rotateZ")`;
+	
+	setAttr ($curRig + "Foot_Left_FK_CTRL.rotateX") `getAttr ($curRig + "IK_Foot_Left_LOC.rotateX")`;
+	setAttr ($curRig + "Foot_Left_FK_CTRL.rotateY") `getAttr ($curRig + "IK_Foot_Left_LOC.rotateY")`;
+	setAttr ($curRig + "Foot_Left_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_Foot_Left_LOC.rotateZ")`;
+	
+	setAttr ($curRig + "Toe_Left_FK_CTRL.rotateX") `getAttr ($curRig + "IK_Toe_Left_LOC.rotateX")`;
+	setAttr ($curRig + "Toe_Left_FK_CTRL.rotateY") `getAttr ($curRig + "IK_Toe_Left_LOC.rotateY")`;
+	setAttr ($curRig + "Toe_Left_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_Toe_Left_LOC.rotateZ")`;
+	
+}
+
+proc matchFK_RightLeg(){
+
+	global string $curRig;
+	
+	setAttr ($curRig + "UpperLeg_Right_FK_CTRL.rotateX") `getAttr ($curRig + "IK_UpperLeg_Right_LOC.rotateX")`;
+	setAttr ($curRig + "UpperLeg_Right_FK_CTRL.rotateY") `getAttr ($curRig + "IK_UpperLeg_Right_LOC.rotateY")`;
+	setAttr ($curRig + "UpperLeg_Right_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_UpperLeg_Right_LOC.rotateZ")`;
+	
+	setAttr ($curRig + "LowerLeg_Right_FK_CTRL.rotateX") `getAttr ($curRig + "IK_LowerLeg_Right_LOC.rotateX")`;
+	setAttr ($curRig + "LowerLeg_Right_FK_CTRL.rotateY") `getAttr ($curRig + "IK_LowerLeg_Right_LOC.rotateY")`;
+	setAttr ($curRig + "LowerLeg_Right_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_LowerLeg_Right_LOC.rotateZ")`;
+	
+	setAttr ($curRig + "Foot_Right_FK_CTRL.rotateX") `getAttr ($curRig + "IK_Foot_Right_LOC.rotateX")`;
+	setAttr ($curRig + "Foot_Right_FK_CTRL.rotateY") `getAttr ($curRig + "IK_Foot_Right_LOC.rotateY")`;
+	setAttr ($curRig + "Foot_Right_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_Foot_Right_LOC.rotateZ")`;
+	
+	setAttr ($curRig + "Toe_Right_FK_CTRL.rotateX") `getAttr ($curRig + "IK_Toe_Right_LOC.rotateX")`;
+	setAttr ($curRig + "Toe_Right_FK_CTRL.rotateY") `getAttr ($curRig + "IK_Toe_Right_LOC.rotateY")`;
+	setAttr ($curRig + "Toe_Right_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_Toe_Right_LOC.rotateZ")`;
+	
+}
+
+proc matchFK_LeftArm(){
+
+	global string $curRig;
+	
+	setAttr ($curRig + "UpperArm_Left_FK_CTRL.rotateX") `getAttr ($curRig + "IK_UpperArm_Left_LOC.rotateX")`;
+	setAttr ($curRig + "UpperArm_Left_FK_CTRL.rotateY") `getAttr ($curRig + "IK_UpperArm_Left_LOC.rotateY")`;
+	setAttr ($curRig + "UpperArm_Left_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_UpperArm_Left_LOC.rotateZ")`;
+	
+	setAttr ($curRig + "LowerArm_Left_FK_CTRL.rotateX") `getAttr ($curRig + "IK_LowerArm_Left_LOC.rotateX")`;
+	setAttr ($curRig + "LowerArm_Left_FK_CTRL.rotateY") `getAttr ($curRig + "IK_LowerArm_Left_LOC.rotateY")`;
+	setAttr ($curRig + "LowerArm_Left_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_LowerArm_Left_LOC.rotateZ")`;
+	
+	setAttr ($curRig + "Hand_Left_FK_CTRL.rotateX") `getAttr ($curRig + "IK_Hand_Left_LOC.rotateX")`;
+	setAttr ($curRig + "Hand_Left_FK_CTRL.rotateY") `getAttr ($curRig + "IK_Hand_Left_LOC.rotateY")`;
+	setAttr ($curRig + "Hand_Left_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_Hand_Left_LOC.rotateZ")`;
+	
+}
+
+proc matchFK_RightArm(){
+
+	global string $curRig;
+	
+	setAttr ($curRig + "UpperArm_Right_FK_CTRL.rotateX") `getAttr ($curRig + "IK_UpperArm_Right_LOC.rotateX")`;
+	setAttr ($curRig + "UpperArm_Right_FK_CTRL.rotateY") `getAttr ($curRig + "IK_UpperArm_Right_LOC.rotateY")`;
+	setAttr ($curRig + "UpperArm_Right_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_UpperArm_Right_LOC.rotateZ")`;
+	
+	setAttr ($curRig + "LowerArm_Right_FK_CTRL.rotateX") `getAttr ($curRig + "IK_LowerArm_Right_LOC.rotateX")`;
+	setAttr ($curRig + "LowerArm_Right_FK_CTRL.rotateY") `getAttr ($curRig + "IK_LowerArm_Right_LOC.rotateY")`;
+	setAttr ($curRig + "LowerArm_Right_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_LowerArm_Right_LOC.rotateZ")`;
+	
+	setAttr ($curRig + "Hand_Right_FK_CTRL.rotateX") `getAttr ($curRig + "IK_Hand_Right_LOC.rotateX")`;
+	setAttr ($curRig + "Hand_Right_FK_CTRL.rotateY") `getAttr ($curRig + "IK_Hand_Right_LOC.rotateY")`;
+	setAttr ($curRig + "Hand_Right_FK_CTRL.rotateZ") `getAttr ($curRig + "IK_Hand_Right_LOC.rotateZ")`;
+	
+}
+
+proc importNewRig(){ 
+	
+	global string $rigs[];
+	int $unique = 0;
+	string $name;
+	while($unique == 0){
+		
+		if(`promptDialog -message "Choose a new Namespace:" -text ("goon" + size($rigs)) -button "Ok" -button "Cancel" -defaultButton "Ok" -cancelButton "Cancel" -dismissString "Cancel"` != "Cancel"){
+			
+			$name = `promptDialog -q`;
+			$unique = 1;
+			for($n = 0; $n < size($rigs); $n++){
+				
+				string $rig = substring( $rigs[$n], 1, (size($rigs[$n]) - 1));
+				if($rig == $name) $unique = 0;
+				
+			}
+				
+		}else return;
+		
+		if($unique == 0) confirmDialog -message "Requested NameSpace in use, please choose another." -button "Okay";
+		
+	}
+		
+	string $userDir = `internalVar -userPrefDir`;
+	string $result = `fileDialog -dm ($userDir + "/goonFiles/*.ma")`/**/;
+	if($result != "") file -r -namespace $name -options "v=0"  -pr -loadReferenceDepth "all" $result;
+	refreshWindow();
+	
+}
+
+ proc newPoseButton (string $poses[], string $node_group[], string $curRig){
+		
+
+	if(`promptDialog -message "Enter new pose name:" -button "Ok" -button "Cancel" -defaultButton "Ok" -cancelButton "Cancel" -dismissString "Cancel"` != "Cancel"){
+		
+		string $result = `promptDialog -q`;
+		addPose($result, $node_group, $poses, $curRig);
+		
+	}
+	
+	refreshWindow;
+	 	 
+ }
+ 
+ proc editPoseButton (int $selected, string $poses[], string $node_group[], string $curRig){
+	
+	string $pose[];
+	tokenize($poses[$selected], ",", $pose);
+		
+	if(`promptDialog -message "Enter new pose name:" -text $pose[0] -button "Ok" -button "Cancel" -defaultButton "Ok" -cancelButton "Cancel" -dismissString "Cancel"` != "Cancel"){
+		
+		string $result = `promptDialog -q`;
+		editPose($selected, $result, $node_group, $poses, $curRig);
+		
+	}
+	
+	refreshWindow;
+	 	 
+ }
+ 
+ proc applyPoseButton (int $selected, string $poses[], string $node_group[], string $curRig){
+	
+	applyPose($selected, $poses, $node_group, $curRig);
+	 	 
+ }
+ 
+ proc deletePoseButton (int $selected, string $poses[], string $node_group[]){
+	
+	deletePose($selected, $poses, $node_group);
+	refreshWindow;
+	 	 
+ }
+ 
+ proc loadPoseButton (string $type, string $curRig){
+		
+	global string $hand_nodes_right[];
+	global string $hand_nodes_left[];
+	global string $brow_nodes[];
+	global string $mouth_nodes[];
+	
+	global string $hand_poses[];
+	global string $mouth_poses[];
+	global string $phoneme_poses[];
+	global string $brow_poses[];
+	 
+	string $userDir = `internalVar -userPrefDir`;
+	string $result = `fileDialog -dm ($userDir + "/goonFiles/*.pos")`; /* this is here just to make the script color correctly */
+	
+	if($result != ""){
+		
+		if($type == "Mouth")
+		{
+			loadPoseFile($result, $mouth_poses, "Mouth", $curRig);
+			
+		}else if($type == "Phoneme")
+		{
+			loadPoseFile($result, $phoneme_poses, "Phoneme", $curRig);
+			
+		}else if($type == "Brow")
+		{
+			loadPoseFile($result, $brow_poses, "Brow", $curRig);
+			
+		}else if($type == "Hand")
+		{
+			loadPoseFile($result, $hand_poses, "Hand", $curRig);
+			
+		}
+		
+	}
+	
+	refreshWindow;
+	 	 
+ }
+ 
+  proc savePoseButton (string $type){
+		
+	global string $hand_nodes_right[];
+	global string $hand_nodes_left[];
+	global string $brow_nodes[];
+	global string $mouth_nodes[];
+	
+	global string $hand_poses[];
+	global string $mouth_poses[];
+	global string $phoneme_poses[];
+	global string $brow_poses[];
+	 
+	string $userDir = `internalVar -userPrefDir`;
+	string $result = `fileDialog -m 1 -dm ($userDir + "/goonFiles/*.pos")`; /* this is here just to make the script highlights correctly */
+	
+	if($result != ""){
+		
+		if($type == "Mouth")
+		{
+			savePoseFile($result, $mouth_poses, "Mouth");
+			
+		}else if($type == "Phoneme")
+		{
+			savePoseFile($result, $phoneme_poses, "Phoneme");
+			
+		}else if($type == "Brow")
+		{
+			savePoseFile($result, $brow_poses, "Brow");
+			
+		}else if($type == "Hand")
+		{
+			savePoseFile($result, $hand_poses, "Hand");
+			
+		}
+		
+	}
+	 	 
+ }
+ 
+ proc buildGoonPicker(){
+
+	global string $hand_poses[];
+	global string $mouth_poses[];
+	global string $phoneme_poses[];
+	global string $brow_poses[];
+	
+	int $selected;
+	
+	// Namespace stuff... rig namespaces must be parented directly under the root space to work!
+	global string $curRig;
+	global string $rigs[];
+	clear $rigs;
+	string $oldSpace = `namespaceInfo -cur`;
+	namespace -set ":";
+	string $namespaces[] = `namespaceInfo -lon`;
+	for($name in $namespaces){
+		
+		if(objExists($name + ":" + "goonRig_v1")) $rigs[size($rigs)] = $name + ":";	
+		
+	}
+	 
+	if(`window -exists goonPicker`){
+		
+		deleteUI goonPicker;			
+		 	
+ 	}
+ 	window -menuBar true -title "goonRig Beta Picker" -height 500 -width 350 -sizeable 0 goonPicker;
+
+					string $menuLabel;
+ 					if($curRig == ""){
+						
+						$menuLabel = "goonRoot";
+						
+					}else{
+						
+						$menuLabel = $curRig;	
+						
+					}
+ 					menu -to true -l $menuLabel "goonMenu";
+						// only have root option if it exists...
+						if(objExists("goonRig_v1")) menuItem -l "goonRoot" -c ("$curRig = \":\";menu -e -l \"goonRoot\" \"goonMenu\";");	
+						for($r = 0; $r < size($rigs); $r++){
+						
+							menuItem -l $rigs[$r] -c ("$curRig = $rigs[" + $r + "];menu -e -l $curRig \"goonMenu\";");	
+							
+						}
+						menuItem -l "Add rig..." -c ("importNewRig;");
+						
+					setParent ..;
+					string $tabs = `tabLayout -innerMarginWidth 5 -innerMarginHeight 5 -width 350 -height 350 "goonPoseTabs"`;
+				
+					string $fkMatchTab = `gridLayout -numberOfColumns 2 -cellWidthHeight 120 80`;  
+								rowColumnLayout -numberOfRows 3;
+									text -label "Right Arm" -height 20;
+									button -label "Select FK" -height 20 -command "select {$curRig + \"UpperArm_Right_FK_CTRL\", $curRig + \"LowerArm_Right_FK_CTRL\", $curRig + \"Hand_Right_FK_CTRL\"}";
+									button -label "Match FK" -height 20 -command "matchFK_RightArm()";
+								setParent ..;
+								rowColumnLayout -numberOfRows 3;
+									text -label "Left Arm" -height 20;
+									button -label "Select FK" -height 20 -command "select {$curRig + \"UpperArm_Left_FK_CTRL\", $curRig + \"LowerArm_Left_FK_CTRL\", $curRig + \"Hand_Left_FK_CTRL\"}";
+									button -label "Match FK" -height 20 -command "matchFK_LeftArm()";
+								setParent ..;
+								rowColumnLayout -numberOfRows 3;
+									text -label "Right Leg" -height 20;
+									button -label "Select FK" -height 20 -command "select {$curRig + \"UpperLeg_Right_FK_CTRL\", $curRig + \"LowerLeg_Right_FK_CTRL\", $curRig + \"Foot_Right_FK_CTRL\", $curRig + \"Toe_Right_FK_CTRL\"}";
+									button -label "Match FK" -height 20 -command "matchFK_RightLeg()";
+								setParent ..;
+								rowColumnLayout -numberOfRows 3;
+									text -label "Left Leg" -height 20;
+									button -label "Select FK" -height 20 -command "select {$curRig + \"UpperLeg_Left_FK_CTRL\", $curRig + \"LowerLeg_Left_FK_CTRL\", $curRig + \"Foot_Left_FK_CTRL\", $curRig + \"Toe_Left_FK_CTRL\"}";
+									button -label "Match FK" -height 20 -command "matchFK_LeftLeg()";
+								setParent ..;
+							setParent ..;
+							
+					
+					string $mouthTab = `rowColumnLayout -numberOfRows 3 -rowHeight 1 25 -rowHeight 2 370 -rowHeight 3 46`;  
+								rowColumnLayout -numberOfColumns 2;
+									button -label "Select All" -height 20 -command "selectAll()";
+									button -label "Select Mouth" -height 20 -command "selectMouth()";
+								setParent..;   
+								scrollLayout -width 325 -height 370 -horizontalScrollBarThickness 0;
+									rowColumnLayout -numberOfColumns 3;
+										for($n = 0; $n < size($mouth_poses); $n++){
+											
+											float $bgColor = 0.5;
+											if($n == $selected) $bgColor = 1.0;
+											string $pose[];
+											tokenize($mouth_poses[$n], ",", $pose);
+											string $icon = `internalVar -userPrefDir` + "goonFiles/mouth_icons/" + $pose[1];
+											string $label = $pose[0];
+											columnLayout  -width 100 -height 120;
+												image -image $icon -width 100 -height 100;
+												button -height 20 -width 100 -label $label -command ("$selected = " + $n + ";updateSelection($selected, \"mouth\", $mouth_poses)") -bgc $bgColor 0.5 0.5 ("mouthPoseGrp"+$n);
+											setParent ..;										
+										}
+									setParent ..;
+								setParent ..;
+								rowColumnLayout -numberOfColumns 3 -height 40;
+									button -label "New Pose" -height 20 -command "newPoseButton($mouth_poses, $mouth_nodes, $curRig)";
+									button -label "Apply Pose" -height 20 -command "applyPoseButton($selected, $mouth_poses, $mouth_nodes, $curRig)";
+									button -label "Edit Pose" -height 20 -command "editPoseButton ($selected, $mouth_poses, $mouth_nodes, $curRig)";
+									button -label "Delete Pose" -height 20 -command "deletePoseButton ($selected, $mouth_poses, $mouth_nodes)";
+									button -label "Import Poses" -height 20 -command "loadPoseButton(\"Mouth\", $curRig)";
+									button -label "Export Poses" -height 20 -command "savePoseButton(\"Mouth\")";
+								setParent ..;
+							setParent ..;
+						
+						string $phonemeTab = `rowColumnLayout -numberOfRows 3 -rowHeight 1 25 -rowHeight 2 370 -rowHeight 3 46`;     
+								rowColumnLayout -numberOfColumns 2;
+									button -label "Select All" -height 20 -command "selectAll()";
+									button -label "Select Mouth" -height 20 -command "selectMouth()";
+								setParent..;   
+								scrollLayout -width 325 -height 370 -horizontalScrollBarThickness 0;
+									rowColumnLayout -numberOfColumns 3;
+										for($n = 0; $n < size($phoneme_poses); $n++){
+											
+											float $bgColor = 0.5;
+											if($n == $selected) $bgColor = 1.0;
+											string $pose[];
+											tokenize($phoneme_poses[$n], ",", $pose);
+											string $icon = `internalVar -userPrefDir` + "goonFiles/mouth_icons/" + $pose[1];
+											string $label = $pose[0];
+											columnLayout  -width 100 -height 120;
+												image -image $icon -width 100 -height 100;
+												button -height 20 -width 100 -label $label -command ("$selected = " + $n + ";updateSelection($selected, \"phoneme\", $phoneme_poses)") -bgc $bgColor 0.5 0.5 ("phonemePoseGrp"+$n);
+											setParent ..;										
+										}
+									setParent ..;
+								setParent ..;
+								rowColumnLayout -numberOfColumns 3 -height 40;
+									button -label "New Pose" -height 20 -command "newPoseButton($phoneme_poses, $mouth_nodes, $curRig)";
+									button -label "Apply Pose" -height 20 -command "applyPoseButton($selected, $phoneme_poses, $mouth_nodes, $curRig)";
+									button -label "Edit Pose" -height 20 -command "editPoseButton ($selected, $phoneme_poses, $mouth_nodes, $curRig)";
+									button -label "Delete Pose" -height 20 -command "deletePoseButton ($selected, $phoneme_poses, $mouth_nodes)";
+									button -label "Import Poses" -height 20 -command "loadPoseButton(\"Phoneme\", $curRig)";
+									button -label "Export Poses" -height 20 -command "savePoseButton(\"Phoneme\")";
+								setParent ..;
+							setParent ..;
+					
+						string $browTab = `rowColumnLayout -numberOfRows 3 -rowHeight 1 25 -rowHeight 2 370 -rowHeight 3 46`;
+					         	rowColumnLayout -numberOfColumns 2;
+									button -label "Select All" -height 20 -command "selectAll()";
+									button -label "Select Brow" -height 20 -command "selectBrow()";
+								setParent..;   
+								scrollLayout -width 325 -height 370 -horizontalScrollBarThickness 0;
+									rowColumnLayout -numberOfColumns 3;
+										for($n = 0; $n < size($brow_poses); $n++){
+											
+											float $bgColor = 0.5;
+											if($n == $selected) $bgColor = 1.0;
+											string $pose[];
+											tokenize($brow_poses[$n], ",", $pose);
+											string $icon = `internalVar -userPrefDir` + "goonFiles/brow_icons/" + $pose[1];
+											string $label = $pose[0];
+											columnLayout  -width 100 -height 120;
+												image -image $icon -width 100 -height 100;
+												button -height 20 -width 100 -label $label -command ("$selected = " + $n + ";updateSelection($selected, \"brow\", $brow_poses)") -bgc $bgColor 0.5 0.5 ("browPoseGrp"+$n);
+											setParent ..;										
+										}
+									setParent ..;
+								setParent ..;
+								rowColumnLayout -numberOfColumns 3 -height 40;
+									button -label "New Pose" -height 20 -command "newPoseButton($brow_poses, $brow_nodes, $curRig)";
+									button -label "Apply Pose" -height 20 -command "applyPoseButton($selected, $brow_poses, $brow_nodes, $curRig)";
+									button -label "Edit Pose" -height 20 -command "editPoseButton ($selected, $brow_poses, $brow_nodes, $curRig)";
+									button -label "Delete Pose" -height 20 -command "deletePoseButton ($selected, $brow_poses, $brow_nodes)";
+									button -label "Import Poses" -height 20 -command "loadPoseButton(\"Brow\", $curRig)";
+									button -label "Export Poses" -height 20 -command "savePoseButton(\"Brow\")";
+								setParent ..;
+							setParent ..;
+						
+						string $rightHandTab = `rowColumnLayout -numberOfRows 3 -rowHeight 1 25 -rowHeight 2 370 -rowHeight 3 46`;
+						        rowColumnLayout -numberOfColumns 2;
+										button -label "Select All" -height 20 -command "selectAll()";
+										button -label "Select Right Hand" -height 20 -command "select ($curRig + \"Hand_Right_CTRL\")";
+									setParent..;    
+								scrollLayout -width 325 -height 370 -horizontalScrollBarThickness 0;
+									rowColumnLayout -numberOfColumns 3;
+										for($n = 0; $n < size($hand_poses); $n++){
+											
+											float $bgColor = 0.5;
+											if($n == $selected) $bgColor = 1.0;
+											string $pose[];
+											tokenize($hand_poses[$n], ",", $pose);
+											string $icon = `internalVar -userPrefDir` + "goonFiles/hand_icons/" + $pose[1];
+											string $label = $pose[0];
+											columnLayout  -width 100 -height 120;
+												image -image $icon -width 100 -height 100;
+												button -height 20 -width 100 -label $label -command ("$selected = " + $n + ";updateSelection($selected, \"leftHand\", $hand_poses)") -bgc $bgColor 0.5 0.5 ("leftHandPoseGrp"+$n);
+											setParent ..;										
+										}
+									setParent ..;
+								setParent ..;
+								rowColumnLayout -numberOfColumns 3 -height 40;
+									button -label "New Pose" -height 20 -command "newPoseButton($hand_poses, $hand_nodes_right, $curRig)";
+									button -label "Apply Pose" -height 20 -command "applyPoseButton($selected, $hand_poses, $hand_nodes_right, $curRig)";
+									button -label "Edit Pose" -height 20 -command "editPoseButton ($selected, $hand_poses, $hand_nodes_right, $curRig)";
+									button -label "Delete Pose" -height 20 -command "deletePoseButton ($selected, $hand_poses, $hand_nodes_right)";
+									button -label "Import Poses" -height 20 -command "loadPoseButton(\"Hand\", $curRig)";
+									button -label "Export Poses" -height 20 -command "savePoseButton(\"Hand\")";
+								setParent ..;
+							setParent ..;
+					    
+					    string $leftHandTab = `rowColumnLayout -numberOfRows 3 -rowHeight 1 25 -rowHeight 2 370 -rowHeight 3 46`;
+					         	rowColumnLayout -numberOfColumns 2;
+									button -label "Select All" -height 20 -command "selectAll()";
+									button -label "Select Left Hand" -height 20 -command "select ($curRig + \"Hand_Left_CTRL\")";
+								setParent..;   
+					    		scrollLayout -width 325 -height 370 -horizontalScrollBarThickness 0;
+									rowColumnLayout -numberOfColumns 3;
+										for($n = 0; $n < size($hand_poses); $n++){
+											
+											float $bgColor = 0.5;
+											if($n == $selected) $bgColor = 1.0;
+											string $pose[];
+											tokenize($hand_poses[$n], ",", $pose);
+											string $icon = `internalVar -userPrefDir` + "goonFiles/hand_icons/" + $pose[1];
+											string $label = $pose[0];
+											columnLayout  -width 100 -height 120;
+												image -image $icon -width 100 -height 100;
+												button -height 20 -width 100 -label $label -command ("$selected = " + $n + ";updateSelection($selected, \"rightHand\", $hand_poses)") -bgc $bgColor 0.5 0.5 ("rightHandPoseGrp"+$n);
+											setParent ..;										
+										}
+									setParent ..;
+								setParent ..;
+								rowColumnLayout -numberOfColumns 3 -height 40;
+									button -label "New Pose" -height 20 -command "newPoseButton($hand_poses, $hand_nodes_left, $curRig)";
+									button -label "Apply Pose" -height 20 -command "applyPoseButton($selected, $hand_poses, $hand_nodes_left, $curRig)";
+									button -label "Edit Pose" -height 20 -command "editPoseButton ($selected, $hand_poses, $hand_nodes_left, $curRig)";
+									button -label "Delete Pose" -height 20 -command "deletePoseButton ($selected, $hand_poses, $hand_nodes_left)";
+									button -label "Import Poses" -height 20 -command "loadPoseButton(\"Hand\", $curRig)";
+									button -label "Export Poses" -height 20 -command "savePoseButton(\"Hand\")";
+								setParent ..;
+							setParent ..;
+
+				     tabLayout -edit
+				         -tabLabel $fkMatchTab "Utility" -tabLabel $mouthTab "Mouth" -tabLabel $phonemeTab "Phonemes" -tabLabel $browTab "Brow" -tabLabel $rightHandTab "Right Hand" -tabLabel $leftHandTab "Left Hand"
+				         //-tabLabel $fkMatchTab "Utility"
+				         $tabs;
+			
+			 showWindow;	 
+ }
+ 
+ proc refreshWindow(){
+	 
+	int $tab = `tabLayout -q -selectTabIndex "goonPoseTabs"`;
+	 buildGoonPicker;
+	tabLayout -e -selectTabIndex $tab "goonPoseTabs";
+	 
+ }
+ 
+ proc updateSelection(int $selected, string $tab, string $poses[]){
+	 
+	 for($n = 0; $n < size($poses); $n++){
+										
+		float $bgColor = 0.5;
+		if($n == $selected) $bgColor = 1.0;
+		button -e -vis 0 ($tab + "PoseGrp"+$n);
+		button -e -vis 1 -bgc $bgColor 0.5 0.5 ($tab + "PoseGrp"+$n);							
+	}
+
+ }
+ 
+ proc goonPicker(){
+	
+	global string $hand_nodes_right[];
+	global string $hand_nodes_left[];
+	global string $brow_nodes[];
+	global string $mouth_nodes[];
+	
+	global string $hand_poses[];
+	global string $mouth_poses[];
+	global string $phoneme_poses[];
+	global string $brow_poses[];
+	
+	global string $curRig;
+	global string $rigs[];
+	clear $rigs;
+	string $oldSpace = `namespaceInfo -cur`;
+	namespace -set ":";
+	string $namespaces[] = `namespaceInfo -lon`;
+	for($name in $namespaces){
+		
+		if(objExists($name + ":" + "goonRig_v1")) $rigs[size($rigs)] = $name + ":";	
+		
+	}
+	
+	$curRig = $rigs[0];
+	
+	 
+	string $userDir = `internalVar -userPrefDir`;
+	string $file;
+	
+	$file = $userDir + 	"/goonFiles/mouth.pos";
+	loadPoseFile($file, $mouth_poses, "Mouth", $curRig);
+	
+	$file = $userDir + 	"/goonFiles/phoneme.pos";
+	loadPoseFile($file, $phoneme_poses, "Phoneme", $curRig);
+
+	$file = $userDir + 	"/goonFiles/brow.pos";
+	loadPoseFile($file, $brow_poses, "Brow", $curRig);
+
+	$file = $userDir + 	"/goonFiles/hand.pos";
+	loadPoseFile($file, $hand_poses, "Hand", $curRig);
+
+	// Build control and load default pose files...
+	buildGoonPicker;
+	
+	window -e -height 520 -width 350 goonPicker;
+	
+	 
+ }
+ 
+ goonPicker;

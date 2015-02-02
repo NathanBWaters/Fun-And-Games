@@ -1,0 +1,18 @@
+goonRig v1 BETA
+© 2008 Sean Burgoon
+
+Requirements
+
+This rig officially works in Maya 2008. If you turn off version checking it should work with at least version 8.5, and possibly earlier versions, though there’s no guarantee.
+
+License
+
+Licenses suck and I just want everyone to have fun with the rig and learn, but I have to cover my bases, so here goes nothing… By using the files included with this license you agree to the following license. If you don’t agree, delete the file and discontinue use. You have the right to non-exclusive personal use of the rig and scripts contained within this distribution. You may modify the contained rig and scripts in any way you like and redistribute the rig so long as you contain a copy of this license and a detailed list of changes you’ve made, along with a link back to the original rig (currently at www.seanburgoon.com). However, you may not charge for the rig or any modified version of the rig, nor may it be used in any commercial product or as an official part of any paid service. If you are an institution that wishes to make this rig a part of your curriculum, or for information about commercial use, please contact me at goonrig@gmail.com for licensing information.
+
+Support
+
+This rig comes with no guarantee of support. That said, e-mails sent to goonrig@gmail.com will be looked at and I’m glad to answer any questions. The rig is an early beta, so it will likely break or be found lacking of certain features. I will create a dedicated website soon where I’ll keep a wish list of features for future release, so until then feel free to e-mail request to the above address.
+
+Thanks
+
+Thanks go out to Morgan Loomis (of Norman rig fame) and the Animation Mentor team for providing inspiration with their awesome rigs. I'm not there yet, but it's great to have something to shoot for :)
