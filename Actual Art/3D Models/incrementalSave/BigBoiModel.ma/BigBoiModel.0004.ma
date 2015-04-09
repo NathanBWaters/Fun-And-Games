@@ -1,6 +1,6 @@
 //Maya ASCII 2015 scene
 //Name: BigBoiModel.ma
-//Last modified: Thu, Apr 09, 2015 11:55:58 AM
+//Last modified: Thu, Apr 09, 2015 11:55:50 AM
 //Codeset: 1252
 requires maya "2015";
 currentUnit -l centimeter -a degree -t film;
@@ -12,7 +12,7 @@ fileInfo "osv" "Microsoft Windows 8 Business Edition, 64-bit  (Build 9200)\n";
 fileInfo "license" "student";
 createNode transform -s -n "persp";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 0.027443123378719417 6.2487957518273642 7.0350681174437995 ;
+	setAttr ".t" -type "double3" -0.016997693638431954 6.3438748676683128 9.5810808191918184 ;
 	setAttr ".r" -type "double3" -2.138352729254775 -1.0000000000016429 9.3194506908301359e-018 ;
 	setAttr ".rp" -type "double3" -1.6653345369377348e-016 8.8817841970012523e-016 0 ;
 	setAttr ".rpt" -type "double3" 7.1011681967762412e-017 -5.4291871708068677e-018 
@@ -20,7 +20,7 @@ createNode transform -s -n "persp";
 createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 5.928076150268196;
+	setAttr ".coi" 8.4762511250194414;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -66,7 +66,7 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr -k off ".v";
 	setAttr ".rnd" no;
 	setAttr ".coi" 100.1;
-	setAttr ".ow" 7.3040838851948662;
+	setAttr ".ow" 2.1363323882884115;
 	setAttr ".imn" -type "string" "side";
 	setAttr ".den" -type "string" "side_depth";
 	setAttr ".man" -type "string" "side_mask";
